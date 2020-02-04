@@ -33,3 +33,7 @@ class Wheel:
     @property
     def burst(self) -> bool:
         return self._burst
+
+    def inflate(self, additional : float):
+        self.pressure = self.pressure + additional
+        

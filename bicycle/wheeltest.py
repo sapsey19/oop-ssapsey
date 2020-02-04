@@ -4,7 +4,7 @@ from wheel import Wheel
 
 
 class WheelTest(unittest.TestCase):
-
+    
     def testDefaults(self):
         wheel = Wheel()
         self.assertEqual(wheel.pressure, Wheel.DEFAULT_PRESSURE)
