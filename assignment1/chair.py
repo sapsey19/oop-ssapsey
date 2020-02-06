@@ -2,8 +2,6 @@ from typing import Sequence
 from leg import Leg
 
 class Chair:
-    MAX_WEIGHT : float = 100 #pounds per leg
-
     def __init__(self, numLegs : int, material : str, length : float = Leg.DEFAULT_LENGTH):
         self.legs : Sequence[Leg] = []
         for _ in range (0, numLegs):
@@ -25,5 +23,7 @@ class Chair:
         return self.legs[0].isBroken()
 
     def sit(self, value : float):
+        if self.legs[0].isBroken():
+            raise ValueError("Chair is broken! Cannot sit.")
         if value > Leg.MAX_WEIGHT*self.numLegs:
             self.legs[0].setBroken(True)
