@@ -3,14 +3,17 @@ class Leg:
     MAX_WEIGHT : float = 75 # pounds per leg
 
     def __init__(self, length : float = DEFAULT_LENGTH):
-        self.length = length
-        self.broken = False
+        self._length = length
+        self._broken = False
     
-    def getLength(self) -> float:
-        return self.length
+    @property 
+    def length(self) -> float:
+        return self._length
 
-    def isBroken(self) -> bool:
-        return self.broken
+    @property
+    def broken(self) -> bool:
+        return self._broken
     
-    def setBroken(self, value : bool) -> None:
-        self.broken = value
+    @broken.setter
+    def broken(self, value : bool) -> None:
+        self._broken = value

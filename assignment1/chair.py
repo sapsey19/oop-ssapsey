@@ -3,27 +3,33 @@ from leg import Leg
 
 class Chair:
     def __init__(self, numLegs : int, material : str, length : float = Leg.DEFAULT_LENGTH):
-        self.legs : Sequence[Leg] = []
+        self._legs : Sequence[Leg] = []
+        if numLegs < 3:
+            raise ValueError('Cannot create a chair with less than 3 legs.')
         for _ in range (0, numLegs):
-            self.legs.append(Leg(length))
+            self._legs.append(Leg(length))
         
-        self.numLegs = numLegs
-        self.material : str = material
-        
-    def getMaterial(self):
-        return self.material
-    
-    def getLength(self):
-        return self.legs[0].getLength()
-    
-    def getNumLegs(self): 
-        return self.numLegs
-        
-    def isBroken(self):
-        return self.legs[0].isBroken()
+        self._numLegs = numLegs
+        self._material : str = material
+
+    @property    
+    def material(self) -> str:
+        return self._material
+
+    @property
+    def length(self) -> float:
+        return self._legs[0].length
+
+    @property
+    def numLegs(self) -> int: 
+        return self._numLegs
+
+    @property    
+    def broken(self):
+        return self._legs[0].broken
 
     def sit(self, value : float):
-        if self.legs[0].isBroken():
+        if self._legs[0].broken:
             raise ValueError("Chair is broken! Cannot sit.")
-        if value > Leg.MAX_WEIGHT*self.numLegs:
-            self.legs[0].setBroken(True)
+        if value > Leg.MAX_WEIGHT*self._numLegs:
+            self._legs[0].broken = True
