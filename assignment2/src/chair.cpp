@@ -4,6 +4,8 @@
 Chair::Chair(int numLegs, std::string material, float length) {
     Chair::_numLegs = numLegs;
     Chair::_material = material;
+    if(numLegs < 3)
+        throw std::invalid_argument("Number of chair legs must be > 2");
     for(int i = 0; i < numLegs; i++)
         legs.push_back(Leg(length));
 }
