@@ -2,12 +2,14 @@
 #include "chair.h"
 
 Chair::Chair(int numLegs, std::string material, float length) {
+    Chair::_numLegs = numLegs;
+    Chair::_material = material;
     for(int i = 0; i < numLegs; i++)
         legs.push_back(Leg(length));
 }
 
 int Chair::getNumLegs() const { return _numLegs; }
-float Chair::getLength() const { return _length; } //come back tot his
+float Chair::getLength() const { return Chair::legs[0].getLength(); } //come back tot his
 std::string Chair::getMaterial() const { return _material; }
 bool Chair::isBroken() const { return legs[0].isBroken(); }
 

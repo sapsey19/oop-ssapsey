@@ -1,6 +1,9 @@
 #include <stdexcept>
 #include "leg.h"
 
+const float Leg::DEFAULT_LENGTH = 20.0; //inches
+const float Leg::MAX_WEIGHT = 75.0; //pounds
+
 Leg::Leg(float length) {
     Leg::_length = length;
     Leg::_broken = false;
