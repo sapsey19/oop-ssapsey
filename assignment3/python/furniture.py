@@ -7,8 +7,12 @@ class Furniture:
     def material(self) -> str:
         return self._material
 
+    @property
+    def sit(self) -> bool:
+        return self._sit
+    
     def sit(self) -> None:
-        if self._sit == True
+        if self._sit == True:
             raise ValueError("Cannot sit! Already sitting.")
         self._sit = True
         

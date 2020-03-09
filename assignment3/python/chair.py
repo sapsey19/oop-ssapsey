@@ -4,7 +4,7 @@ from furniture import Furniture
 
 class Chair(Furniture):
     def __init__(self, numLegs : int, material : str, length : float = Leg.DEFAULT_LENGTH):
-        super(Chair, self).__init__(numLegs, material)
+        super(Chair, self).__init__(material)
         if numLegs < 3:
             raise ValueError('Cannot create a chair with less than 3 legs.')
         self._numLegs : int = numLegs
