@@ -11,10 +11,10 @@ class Furniture:
     def sit(self) -> bool:
         return self._sit
     
-    def sit(self) -> None:
+    def sitDown(self) -> None:
         if self._sit == True:
             raise ValueError("Cannot sit! Already sitting.")
         self._sit = True
         
-    def stand(self) -> None:
+    def standUp(self) -> None:
         self._sit = False
