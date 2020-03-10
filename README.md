@@ -5,3 +5,7 @@
 
 ## Assignment 2
 ### https://github.com/sapsey19/oop-ssapsey/tree/master/assignment2 
+
+## Assignment 3
+### Python Version: https://github.com/sapsey19/oop-ssapsey/tree/master/assignment3/python
+### C++ Version: https://github.com/sapsey19/oop-ssapsey/tree/master/assignment3/c++
