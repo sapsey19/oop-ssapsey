@@ -1,0 +1,18 @@
+#pragma once
+
+#include "furniture.h"
+
+class Leg : public Furniture { 
+private:
+    float _length;
+    bool _broken;
+public:
+    static const float DEFAULT_LENGTH;
+    static const float MAX_WEIGHT;
+    
+    Leg(float length = DEFAULT_LENGTH);
+
+    float getLength() const; //{ return _length; }
+    bool isBroken() const; //{ return _broken; }
+    void setBroken(bool broken); //{ _broken = broken; }
+};
