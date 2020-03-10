@@ -1,19 +1,6 @@
-# Assignment 1
+# Assignment 3
 
-## Made a leg and chair class in Python. The leg class has a maximum weight it can hold before it will break, and the chair class has a method called sit(). If the weight that gets passed into sit exceeds the maximum weight of the chair, one of the legs wil break. The chair class also has attributes like the number of legs, the material that it's made out of, and the length of the legs.  
+## Added polymorphic behavior to the chair assignment from Assignment 1. Now, there is a parent class, called Furniture, that has attributes of different pieces of furniture. I added a BeanBag and Couch class that extends the Furniture class, and used methods from the Furniture class.
 
-## Run
+## The Python version is under the ```python``` folder; the C++ version is under the ```c++``` folder. 
 
-```bash
-    python3.8 main.py
-```
-
-## Test
-```bash
-    python3.8 legtest.py
-    python3.8 chairtest.py
-```
-
-
-
-## Test Screenshot: ![tests-passed](tests-passed.png)
