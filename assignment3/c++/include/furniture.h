@@ -10,8 +10,8 @@ private:
 public:
     Furniture(std::string material);
 
-    std::string getMaterial();
-    bool sit();
+    std::string getMaterial() const;
+    bool alreadySitting() const;
 
     void sitDown();
     void standUp();

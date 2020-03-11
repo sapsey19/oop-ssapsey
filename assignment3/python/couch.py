@@ -1,5 +1,4 @@
 from furniture import Furniture
-from leg import Leg
 
 class Couch(Furniture):
     DEFAULT_MATERIAL : str = 'leather'
@@ -9,5 +8,5 @@ class Couch(Furniture):
         self._numCushions = numCushions
     
     @property
-    def numCushions(self):
+    def numCushions(self) -> int:
         return self._numCushions
