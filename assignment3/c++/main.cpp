@@ -1,5 +1,6 @@
 #include <iostream>
-#include "chair.h"
+#include "include/beanbag.h"
+#include "include/chair.h"
 
 using namespace std;
 

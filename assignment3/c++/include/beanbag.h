@@ -6,9 +6,7 @@ private:
     std::string _material;
     double _diameter;
 public:
-    static const double DEFAULT_DIAMETER = 48.0; 
-
-    BeanBag(std::string material, double diameter = DEFAULT_DIAMETER);
+    BeanBag(std::string material, double diameter);
 
     double getDiameter() const;
 };
