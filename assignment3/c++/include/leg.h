@@ -1,8 +1,6 @@
 #pragma once
 
-#include "furniture.h"
-
-class Leg : public Furniture { 
+class Leg { 
 private:
     float _length;
     bool _broken;

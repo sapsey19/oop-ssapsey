@@ -1,4 +1,4 @@
-#include "beanbag.h" //
+#include "beanbag.h" 
 #include "gtest/gtest.h"
 
 using namespace std;
@@ -9,17 +9,14 @@ TEST(BeanBag, Specifics) {
     ASSERT_EQ(bb.getMaterial(), "cloth");
 }
 
-// TEST(Chair, Breaking) {
-//     int numLegs = 3;
-//     string materialType = "Wood";
-//     float length = 22.5;
-//     Chair stool = Chair(numLegs, materialType, length);
-//     ASSERT_EQ(stool.isBroken(), false);
-//     stool.sit(225);
-//     ASSERT_EQ(stool.isBroken(), false);
-//     stool.sit(226);
-//     ASSERT_EQ(stool.isBroken(), true);
-// }
+TEST(BeanBag, Sit) {
+    BeanBag bb = BeanBag("leather", 40.5);
+    ASSERT_EQ(bb.alreadySitting(), false);
+    bb.sitDown();
+    ASSERT_EQ(bb.alreadySitting(), true);
+    bb.standUp();
+    ASSERT_EQ(bb.alreadySitting(), false);
+}
 
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
