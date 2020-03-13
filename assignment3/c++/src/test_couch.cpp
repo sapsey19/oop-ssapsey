@@ -3,7 +3,7 @@
 
 using namespace std;
 
-TEST(Couch, Specifics) {
+TEST(Couch, Constructor) {
     Couch couch = Couch("leather", 4);
     ASSERT_EQ(couch.getMaterial(), "leather");
     ASSERT_EQ(couch.getNumCushions(), 4);

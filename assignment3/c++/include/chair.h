@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include <vector>
 #include "leg.h"
 #include "furniture.h"
