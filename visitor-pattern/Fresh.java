@@ -1,9 +1,9 @@
-package src;
 
-public class Canned implements Visitable{
+
+public class Fresh implements Visitable{
 	private double price;
 	
-	public Canned(double price) {
+	public Fresh(double price) {
 		this.price = price;
 	}
 	
@@ -15,3 +15,4 @@ public class Canned implements Visitable{
 		return this.price;
 	}
 }
+

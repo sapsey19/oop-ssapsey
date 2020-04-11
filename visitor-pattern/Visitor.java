@@ -1,4 +1,4 @@
-package src;
+
 //Visitor interface for Canned goods, Fresh goods, and Imported goods. 
 interface Visitor {
 	public double visit(Canned cannedItem);

@@ -1,9 +1,9 @@
-package src;
 
-public class Imported implements Visitable{
+
+public class Canned implements Visitable{
 	private double price;
 	
-	public Imported(double price) {
+	public Canned(double price) {
 		this.price = price;
 	}
 	
@@ -15,4 +15,3 @@ public class Imported implements Visitable{
 		return this.price;
 	}
 }
-

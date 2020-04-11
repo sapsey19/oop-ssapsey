@@ -1,4 +1,4 @@
-package src;
+
 
 public class VisitorTest {
 	public static void main(String [] args) {
@@ -10,7 +10,7 @@ public class VisitorTest {
 		Imported wine = new Imported(23.99);
 		
 		System.out.println("Peaches: " + peaches.accept(taxCalc));
-		System.out.println("Peaches: " + bread.accept(taxCalc));
-		System.out.println("Peaches: " + wine.accept(taxCalc));
+		System.out.println("Bread: " + bread.accept(taxCalc));
+		System.out.println("Wine: " + wine.accept(taxCalc));
 	}
 }

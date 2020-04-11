@@ -1,9 +1,9 @@
-package src;
 
-public class Fresh implements Visitable{
+
+public class Imported implements Visitable{
 	private double price;
 	
-	public Fresh(double price) {
+	public Imported(double price) {
 		this.price = price;
 	}
 	
