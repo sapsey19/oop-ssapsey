@@ -1,6 +1,5 @@
 
-
-public class Imported implements Visitable{
+public class Imported implements Visitable {
 	private double price;
 	
 	public Imported(double price) {
@@ -15,4 +14,3 @@ public class Imported implements Visitable{
 		return this.price;
 	}
 }
-

@@ -1,6 +1,4 @@
-
-
-public class Fresh implements Visitable{
+public class Fresh implements Visitable {
 	private double price;
 	
 	public Fresh(double price) {
@@ -15,4 +13,3 @@ public class Fresh implements Visitable{
 		return this.price;
 	}
 }
-

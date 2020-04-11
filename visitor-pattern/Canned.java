@@ -1,6 +1,4 @@
-
-
-public class Canned implements Visitable{
+public class Canned implements Visitable {
 	private double price;
 	
 	public Canned(double price) {
