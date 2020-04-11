@@ -1,1 +1,9 @@
-javac *.java
+#!/bin/bash
+
+arg1=$1
+
+if [ "$arg1" = "clean" ]; then
+    rm *.class
+else 
+    javac *.java
+fi
