@@ -14,4 +14,5 @@
     ./bin/test_chair
 ```
 
-## Test Screenshot: ![tests-passed](tests-passed.png)
+## Test Screenshot: 
+![tests-passed](tests-passed.png)

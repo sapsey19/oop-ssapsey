@@ -1,5 +1,6 @@
 import java.text.DecimalFormat;
 
+//A different visitor that has lower taxes
 class TaxBreak implements Visitor {
 	DecimalFormat df = new DecimalFormat("#.##");
 	private double cannedTax = 0.03;

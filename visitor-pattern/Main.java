@@ -13,7 +13,6 @@ public class Main {
 			Fresh bread = new Fresh(5.80);
 			Imported wine = new Imported(23.99);
 			
-
 			System.out.println("Peaches price after tax: " + peaches.accept(taxCalc));
 			System.out.println("Bread price after tax: " + bread.accept(taxCalc));
 			System.out.println("Wine price after tax: " + wine.accept(taxCalc));

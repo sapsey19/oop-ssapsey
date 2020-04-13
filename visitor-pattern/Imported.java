@@ -1,4 +1,3 @@
-
 public class Imported implements Visitable {
 	private double price;
 	
