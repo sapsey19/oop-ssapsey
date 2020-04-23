@@ -9,12 +9,8 @@ public class Player extends GameObject {
 	private Handler handler;
 	private float velX = 0, velY = 0;
 	
-	//don't like this...
-	private boolean up = false;
-	private boolean down = false;
-	private boolean right = false;
-	private boolean left = false;
-	///
+	public Texture texture = new Texture();
+	
 	public Player(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
@@ -43,9 +39,10 @@ public class Player extends GameObject {
 	}
 
 	public void render(Graphics g) {
-		g.drawRect(x, y, 50, 50);
-		g.setColor(Color.BLUE);
+		//g.drawRect(x, y, 50, 50);
+		//g.setColor(Color.BLUE);
 		//g.fillRect(x, y, 50, 50);
+		g.drawImage(texture.player[0], x, y, null);
 	}
 	
 	private void collision() {

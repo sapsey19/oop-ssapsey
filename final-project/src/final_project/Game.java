@@ -2,6 +2,7 @@ package final_project;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 public class Game extends Canvas implements Runnable {
 	
@@ -10,6 +11,11 @@ public class Game extends Canvas implements Runnable {
 	private boolean isRunning = false;
 	private Thread thread;
 	private Handler handler;
+	
+	private BufferedImageLoader loader = new BufferedImageLoader();
+	private SpriteSheet ss;
+	private BufferedImage floor = null;
+	
 	//private Camera camera;
 	//static Texture texture;
 	
@@ -19,7 +25,13 @@ public class Game extends Canvas implements Runnable {
 		
 		handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
+		
+		floor = loader.loadImage("floorTile.png");		
+		ss = new SpriteSheet(floor);		
+		floor = ss.grabImage(1, 1, 127, 127);
+		
 		handler.addObject(new Player(50, 50, ID.Player, handler));
+		
 	}
 	
 	private void start() {
@@ -85,6 +97,12 @@ public class Game extends Canvas implements Runnable {
 		}
 		
 		Graphics g = bs.getDrawGraphics();
+		
+		//Draws the background
+		for(int xx = 0; xx < 30*72; xx+=32)
+			for(int yy = 0; yy < 30*72; yy+=32)			
+				g.drawImage(floor, xx, yy, null);
+		//
 		
 		handler.render(g);
 		g.dispose();
