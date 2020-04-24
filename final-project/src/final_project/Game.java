@@ -20,17 +20,18 @@ public class Game extends Canvas implements Runnable {
 	//static Texture texture;
 	
 	public Game() {
-		new Window(800, 800, "Final Project", this);
+		new Window(800, 800, "Ghost Simulator", this);
 		start();
 		
 		handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
 		
-		floor = loader.loadImage("floorTile.png");		
+		floor = loader.loadImage("/floorTile.png");		
 		ss = new SpriteSheet(floor);		
 		floor = ss.grabImage(1, 1, 127, 127);
 		
 		handler.addObject(new Player(50, 50, ID.Player, handler));
+		handler.addObject(new Enemy(100, 100, ID.Enemy, handler));
 		
 	}
 	

@@ -1,6 +1,5 @@
 package final_project;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -9,7 +8,12 @@ public class Player extends GameObject {
 	private Handler handler;
 	private float velX = 0, velY = 0;
 	
+	private int width = 48;
+	private int height = 48;
+	
 	public Texture texture = new Texture();
+	
+	public int lastPressed; //0 == Up, 1 == Down, 2 == Right, 3 == Left
 	
 	public Player(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
@@ -34,15 +38,35 @@ public class Player extends GameObject {
 		if(handler.isLeft()) velX = -5;
 		else if(!handler.isRight()) velX = 0;
 		
-		//System.out.println(x + ", " + y);
+		if(x > 800)
+			x = -40;
+		if(x < -48)
+			x = 792;
+		if(y < -48)
+			y = 792;
+		if(y > 800)
+			y = -40;
 		
+		//System.out.println(x);
 	}
 
 	public void render(Graphics g) {
 		//g.drawRect(x, y, 50, 50);
 		//g.setColor(Color.BLUE);
 		//g.fillRect(x, y, 50, 50);
-		g.drawImage(texture.player[0], x, y, null);
+		if(handler.isDown()) g.drawImage(texture.player[0], x, y, null);
+		else if(handler.isLeft()) g.drawImage(texture.player[1], x, y ,null);
+		else if(handler.isRight()) g.drawImage(texture.player[2], x, y ,null);
+		else if(handler.isUp()) g.drawImage(texture.player[3], x, y ,null);
+		
+		if(!handler.isDown() && !handler.isUp() && !handler.isRight() && !handler.isLeft()) {
+			if(lastPressed == 0) g.drawImage(texture.player[3], x, y, null);
+			if(lastPressed == 1) g.drawImage(texture.player[0], x, y, null);
+			if(lastPressed == 2) g.drawImage(texture.player[1], x, y, null);
+			if(lastPressed == 3) g.drawImage(texture.player[2], x, y, null);
+		}
+			
+		
 	}
 	
 	private void collision() {
@@ -50,8 +74,11 @@ public class Player extends GameObject {
 	}
 
 	public Rectangle getBounds() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Rectangle((int) ((int)x+(width/2)-(width/2)/2), (int) ((int)y + (height/2-1)), (int)width/2, (int)height/2);
+	}
+	
+	public void setLastPressed(int lastPressed) {
+		this.lastPressed = lastPressed;
 	}
 	
 //	public boolean isUp() { return up; }
