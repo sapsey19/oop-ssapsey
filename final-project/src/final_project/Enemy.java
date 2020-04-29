@@ -9,14 +9,18 @@ public class Enemy extends GameObject {
 	
 	private Handler handler;
 	private Texture texture = new Texture();
-	private boolean follow = false;
+	
+	private int time = 0;
+	
+	private int diffX;
+	private int diffY;
+	
 
 	public Enemy(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
 	}
 
-	@Override
 	public void tick() {
 		int moveToX = 0;
 		int moveToY = 0;
@@ -26,40 +30,54 @@ public class Enemy extends GameObject {
 		for(int i = 0; i < handler.object.size(); i++) {
 			GameObject temp = handler.object.get(i);
 			if(temp.getID() == ID.Player) {
-				if(getEnemyRange().intersects(temp.getBounds()))
-					 follow = true;
-				else 
-					follow = false;
 				moveToX = temp.getX();
 				moveToY = temp.getY();
 			}
 		}
 		
-		int diffX = moveToX - x;
-		int diffY = moveToY - y;
-
+		diffX = moveToX - x;
+		diffY = moveToY - y;
+		System.out.println(diffX + "," + diffY);
 		float angle = (float)Math.atan2(diffY, diffX);
-		if(follow) {
-			x += 2 * Math.cos(angle);
-			y += 2 * Math.sin(angle);
-		}
+		
+		velX = (float) (2 * Math.cos(angle));
+		velY = (float) (2 * Math.sin(angle));
+		
 		
 	}
 
 	public void render(Graphics g) {
-		if(x > 0)
-			g.drawImage(texture.enemy[0], x, y, null);
-		else if(velX < 0)
-			g.drawImage(texture.enemy[1], x, y, null);
-		else if(velY > 0)
-			g.drawImage(texture.enemy[2], x, y, null);
+		time += 1;
+		if(time > 160)
+			time = 0;
+		
+//		if(diffY > 0)
+//			g.drawImage(texture.zombieDown[(int)time/60], x, y, null);
+//		else if(diffY < 0)
+//			g.drawImage(texture.zombieUp[(int)time/60], x, y, null);
+//		if(diffX > diffY && diffX < 0)
+//			g.drawImage(texture.zombieLeft[(int)time/60], x, y, null);
+//		if(diffX > diffY && diffX < 0)
+//			g.drawImage(texture.zombieRight[(int)time/60], x, y, null);
+		if(velY > 0)
+			g.drawImage(texture.zombieDown[(int)time/60], x, y, null);
 		else if(velY < 0)
-			g.drawImage(texture.enemy[3], x, y, null);
-		Graphics2D g2d = (Graphics2D) g;
+			g.drawImage(texture.zombieUp[(int)time/60], x, y, null);
+		else if(velX < 0)
+			g.drawImage(texture.zombieLeft[(int)time/60], x, y, null);
+		else if(velX < 0)
+			g.drawImage(texture.zombieRight[(int)time/60], x, y, null);
+		
+		//g.drawImage(texture.zombieLeft[2], x, y, null);
+				
+		
+		
+	
+		//Graphics2D g2d = (Graphics2D) g;
 		
 		//draws collision boxes
-		g.setColor(Color.green);
-		g2d.draw(getEnemyRange());
+		//g.setColor(Color.green);
+		//g2d.draw(getEnemyRange());
 		
 	}
 

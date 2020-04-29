@@ -15,23 +15,10 @@ public class KeyInput extends KeyAdapter {
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		
-		if(key == KeyEvent.VK_W) {
-			handler.setUp(true);
-			player.setLastPressed(0);
-		}
-		if(key == KeyEvent.VK_S) {
-			handler.setDown(true);
-			player.setLastPressed(1);
-		}
-		if(key == KeyEvent.VK_D) {
-			handler.setRight(true);
-			player.setLastPressed(2);
-		}
-		if(key == KeyEvent.VK_A) {
-			handler.setLeft(true);
-			player.setLastPressed(3);
-		}
-		
+		if(key == KeyEvent.VK_W) handler.setUp(true);
+		if(key == KeyEvent.VK_S) handler.setDown(true);
+		if(key == KeyEvent.VK_D) handler.setRight(true);
+		if(key == KeyEvent.VK_A) handler.setLeft(true);
 	}
 	
 	public void keyReleased(KeyEvent e) {

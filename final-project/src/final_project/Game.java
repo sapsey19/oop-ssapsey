@@ -31,7 +31,7 @@ public class Game extends Canvas implements Runnable {
 		floor = ss.grabImage(1, 1, 127, 127);
 		
 		handler.addObject(new Player(50, 50, ID.Player, handler));
-		handler.addObject(new Enemy(100, 100, ID.Enemy, handler));
+		//handler.addObject(new Enemy(100, 100, ID.Enemy, handler));
 		
 	}
 	

@@ -13,7 +13,9 @@ public class Player extends GameObject {
 	
 	public Texture texture = new Texture();
 	
-	public int lastPressed; //0 == Up, 1 == Down, 2 == Right, 3 == Left
+	public int lastPressed = 1; // 0 is down, 1 is left, 2 is right, 3 is up 
+	
+	private int walkCount = 0;
 	
 	public Player(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
@@ -54,19 +56,37 @@ public class Player extends GameObject {
 		//g.drawRect(x, y, 50, 50);
 		//g.setColor(Color.BLUE);
 		//g.fillRect(x, y, 50, 50);
-		if(handler.isDown()) g.drawImage(texture.player[0], x, y, null);
-		else if(handler.isLeft()) g.drawImage(texture.player[1], x, y ,null);
-		else if(handler.isRight()) g.drawImage(texture.player[2], x, y ,null);
-		else if(handler.isUp()) g.drawImage(texture.player[3], x, y ,null);
+		if(walkCount >= 160)
+			walkCount = 0;
 		
-		if(!handler.isDown() && !handler.isUp() && !handler.isRight() && !handler.isLeft()) {
-			if(lastPressed == 0) g.drawImage(texture.player[3], x, y, null);
-			if(lastPressed == 1) g.drawImage(texture.player[0], x, y, null);
-			if(lastPressed == 2) g.drawImage(texture.player[1], x, y, null);
-			if(lastPressed == 3) g.drawImage(texture.player[2], x, y, null);
+		if(handler.isDown()) {
+			g.drawImage(texture.playerDown[(int)walkCount/40], x, y, null);
+			lastPressed = 0;
+			walkCount++;
 		}
-			
+		else if(handler.isUp()) {
+			g.drawImage(texture.playerUp[(int)walkCount/40], x, y, null);
+			lastPressed = 3;
+			walkCount++;
+		}
+		if(handler.isLeft()) {
+			g.drawImage(texture.playerLeft[(int)walkCount/40], x, y, null);
+			lastPressed = 1;
+			walkCount++;
+		}
+		else if(handler.isRight()) {
+			g.drawImage(texture.playerRight[(int)walkCount/40], x, y, null);
+			lastPressed = 2;
+			walkCount++;
+		}
 		
+		
+		if(velX == 0 && velY == 0) {
+			if(lastPressed == 0) g.drawImage(texture.playerDown[0], x, y, null);
+			if(lastPressed == 1) g.drawImage(texture.playerLeft[1], x, y, null);
+			if(lastPressed == 2) g.drawImage(texture.playerRight[2], x, y, null);
+			if(lastPressed == 3) g.drawImage(texture.playerUp[3], x, y, null);
+		}
 	}
 	
 	private void collision() {
