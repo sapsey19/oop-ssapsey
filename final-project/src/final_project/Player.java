@@ -56,26 +56,26 @@ public class Player extends GameObject {
 		//g.drawRect(x, y, 50, 50);
 		//g.setColor(Color.BLUE);
 		//g.fillRect(x, y, 50, 50);
-		if(walkCount >= 160)
+		if(walkCount >= 180)
 			walkCount = 0;
 		
 		if(handler.isDown()) {
-			g.drawImage(texture.playerDown[(int)walkCount/40], x, y, null);
+			g.drawImage(texture.playerDown[(int)walkCount/60], x, y, null);
 			lastPressed = 0;
 			walkCount++;
 		}
 		else if(handler.isUp()) {
-			g.drawImage(texture.playerUp[(int)walkCount/40], x, y, null);
+			g.drawImage(texture.playerUp[(int)walkCount/60], x, y, null);
 			lastPressed = 3;
 			walkCount++;
 		}
-		if(handler.isLeft()) {
-			g.drawImage(texture.playerLeft[(int)walkCount/40], x, y, null);
+		else if(handler.isLeft()) {
+			g.drawImage(texture.playerLeft[(int)walkCount/60], x, y, null);
 			lastPressed = 1;
 			walkCount++;
 		}
 		else if(handler.isRight()) {
-			g.drawImage(texture.playerRight[(int)walkCount/40], x, y, null);
+			g.drawImage(texture.playerRight[(int)walkCount/60], x, y, null);
 			lastPressed = 2;
 			walkCount++;
 		}
@@ -83,9 +83,9 @@ public class Player extends GameObject {
 		
 		if(velX == 0 && velY == 0) {
 			if(lastPressed == 0) g.drawImage(texture.playerDown[0], x, y, null);
-			if(lastPressed == 1) g.drawImage(texture.playerLeft[1], x, y, null);
-			if(lastPressed == 2) g.drawImage(texture.playerRight[2], x, y, null);
-			if(lastPressed == 3) g.drawImage(texture.playerUp[3], x, y, null);
+			if(lastPressed == 1) g.drawImage(texture.playerLeft[0], x, y, null);
+			if(lastPressed == 2) g.drawImage(texture.playerRight[0], x, y, null);
+			if(lastPressed == 3) g.drawImage(texture.playerUp[0], x, y, null);
 		}
 	}
 	

@@ -42,7 +42,9 @@ public class Handler {
 		object.remove(tempObject);
 	}
 	
-	//only setters and getters play down here... turn back.
+	public void spawnEnemies() {
+		System.out.println("Spawn");
+	}
 	
 	public boolean isUp() { return up; }
 	public boolean isDown() { return down; }
