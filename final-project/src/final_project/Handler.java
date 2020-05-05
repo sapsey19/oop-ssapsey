@@ -2,6 +2,7 @@ package final_project;
 
 import java.awt.Graphics;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Handler {
 	
@@ -42,8 +43,14 @@ public class Handler {
 		object.remove(tempObject);
 	}
 	
-	public void spawnEnemies() {
-		System.out.println("Spawn");
+	public void enemyFactory() {
+		Random r = new Random();
+		int rand = r.nextInt(10);
+		
+		if(rand > 4)
+			object.add(new Zombie(r.nextInt(800), r.nextInt(800), ID.Zombie, this));
+		else
+			object.add(new Skeleton(r.nextInt(800), r.nextInt(800), ID.Skeleton, this));
 	}
 	
 	public boolean isUp() { return up; }

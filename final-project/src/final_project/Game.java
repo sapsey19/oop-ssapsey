@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
+
 public class Game extends Canvas implements Runnable {
 	
 	private static final long serialVersionUID = 1L;
@@ -17,6 +18,7 @@ public class Game extends Canvas implements Runnable {
 	private BufferedImage floor = null;
 	
 	private int ticks = 0;
+	private int numEnemies = 2;
 	
 	//private Camera camera;
 	//static Texture texture;
@@ -33,8 +35,8 @@ public class Game extends Canvas implements Runnable {
 		floor = ss.grabImage(1, 1, 127, 127);
 		
 		handler.addObject(new Player(50, 50, ID.Player, handler));
-		handler.addObject(new Zombie(100, 100, ID.Zombie, handler));
-		handler.addObject(new Skeleton(700, 700, ID.Skeleton, handler));
+		//handler.addObject(new Zombie(100, 100, ID.Zombie, handler));
+		//handler.addObject(new Skeleton(700, 700, ID.Skeleton, handler));
 		
 	}
 	
@@ -84,14 +86,14 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	private void tick() {
-		
 		handler.tick();
 		if(ticks == 60) {
-			handler.spawnEnemies(); //might just need handler add object
+			for(int i = 0; i < numEnemies; i++)
+				handler.enemyFactory();
 			ticks = 0;
+			numEnemies+=2;
 		}
 		ticks++;
-		
 	}
 
 	private void render() {
