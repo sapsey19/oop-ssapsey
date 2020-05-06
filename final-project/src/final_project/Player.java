@@ -40,6 +40,11 @@ public class Player extends GameObject {
 		if(handler.isLeft()) velX = -5;
 		else if(!handler.isRight()) velX = 0;
 		
+		if(handler.isFire()) {
+			handler.addObject(new Bullet(x, y, 0, -5, ID.Bullet, handler));
+			System.out.println("pew");
+		}
+		
 		if(x > 800)
 			x = -40;
 		if(x < -48)

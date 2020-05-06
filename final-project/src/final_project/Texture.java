@@ -10,6 +10,8 @@ public class Texture {
 	private int zombieHeight = 42;
 	private int skeletonWidth = 30;
 	private int skeletonHeight = 48;
+	private int bulletWidth = 10;
+	private int bulletHeight = 28;
 	
 	public BufferedImage[] playerDown = new BufferedImage[3];
 	public BufferedImage[] playerLeft = new BufferedImage[3];
@@ -22,13 +24,17 @@ public class Texture {
 	public BufferedImage[] skeletonDown = new BufferedImage[3];
 	public BufferedImage[] skeletonUp = new BufferedImage[3];
 	
+	public BufferedImage[] bullet = new BufferedImage[4];
+	
 	SpriteSheet playerSheet;
 	SpriteSheet zombieSheet;
 	SpriteSheet skeletonSheet;
+	SpriteSheet bulletSheet;
 	
 	private BufferedImage playerImage = null;
 	private BufferedImage zombieImage = null;
 	private BufferedImage skeletonImage = null;
+	private BufferedImage bulletImage = null;
 	
 	private Graphics g = null;
 	
@@ -39,6 +45,7 @@ public class Texture {
 			playerImage = loader.loadImage("/player_ghost.png");
 			zombieImage = loader.loadImage("/zombies.png");
 			skeletonImage = loader.loadImage("/skeleton.png");
+			bulletImage = loader.loadImage("/bullet.png");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -47,6 +54,7 @@ public class Texture {
 		playerSheet = new SpriteSheet(playerImage);
 		zombieSheet = new SpriteSheet(zombieImage);
 		skeletonSheet = new SpriteSheet(skeletonImage);
+		bulletSheet = new SpriteSheet(bulletImage);
 		
 		getTextures(g);
 		
@@ -84,6 +92,8 @@ public class Texture {
 		skeletonUp[0] = skeletonSheet.grabImage(0, 152, skeletonWidth, skeletonHeight);
 		skeletonUp[1] = skeletonSheet.grabImage(31, 152, skeletonWidth, skeletonHeight);
 		skeletonUp[2] = skeletonSheet.grabImage(62, 152, skeletonWidth, skeletonHeight);
+		
+		bullet[0] = bulletSheet.grabImage(0, 0, bulletWidth, bulletHeight);
 		
 	}
 }

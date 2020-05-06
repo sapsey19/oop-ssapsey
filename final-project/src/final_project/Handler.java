@@ -10,6 +10,7 @@ public class Handler {
 	private boolean down = false;
 	private boolean right = false;
 	private boolean left = false;
+	private boolean fire = false;
 	
 	LinkedList<GameObject> object = new LinkedList<GameObject>();
 	
@@ -57,9 +58,11 @@ public class Handler {
 	public boolean isDown() { return down; }
 	public boolean isRight() { return right; }
 	public boolean isLeft() { return left; }
+	public boolean isFire() { return fire; }
 	
 	public void setUp(boolean up) { this.up = up; }
 	public void setDown(boolean down) { this.down = down; }
 	public void setRight(boolean right) { this.right = right; }
 	public void setLeft(boolean left) { this.left = left; }
+	public void setFire(boolean fire) { this.fire = fire; }
 }

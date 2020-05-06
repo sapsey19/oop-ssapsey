@@ -7,6 +7,9 @@ import java.awt.image.BufferedImage;
 
 public class Game extends Canvas implements Runnable {
 	
+	public static int width = 800;
+	public static int height = 800;
+	
 	private static final long serialVersionUID = 1L;
 	
 	private boolean isRunning = false;
@@ -24,7 +27,7 @@ public class Game extends Canvas implements Runnable {
 	//static Texture texture;
 	
 	public Game() {
-		new Window(800, 800, "Ghost Simulator", this);
+		new Window(width, height, "Ghost Game", this);
 		start();
 		
 		handler = new Handler();
@@ -34,9 +37,7 @@ public class Game extends Canvas implements Runnable {
 		ss = new SpriteSheet(floor);		
 		floor = ss.grabImage(1, 1, 127, 127);
 		
-		handler.addObject(new Player(50, 50, ID.Player, handler));
-		//handler.addObject(new Zombie(100, 100, ID.Zombie, handler));
-		//handler.addObject(new Skeleton(700, 700, ID.Skeleton, handler));
+		handler.addObject(new Player(400, 400, ID.Player, handler));
 		
 	}
 	
@@ -87,7 +88,7 @@ public class Game extends Canvas implements Runnable {
 	
 	private void tick() {
 		handler.tick();
-		if(ticks == 60) {
+		if(ticks == 600) {
 			for(int i = 0; i < numEnemies; i++)
 				handler.enemyFactory();
 			ticks = 0;
