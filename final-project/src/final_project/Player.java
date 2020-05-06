@@ -13,12 +13,13 @@ public class Player extends GameObject {
 	
 	public Texture texture = new Texture();
 	
-	public int lastPressed = 1; // 0 is down, 1 is left, 2 is right, 3 is up 
-	
+	public static int lastPressed = 0; // 0 is down, 1 is left, 2 is right, 3 is up 
 	private int walkCount = 0;
 	
-	public Player(int x, int y, ID id, Handler handler) {
-		super(x, y, id);
+	private int fireDelay = 0;
+	
+	public Player(int x, int y, int health, ID id, Handler handler) {
+		super(x, y, health, id);
 		this.handler = handler;
 	}
 
@@ -40,10 +41,19 @@ public class Player extends GameObject {
 		if(handler.isLeft()) velX = -5;
 		else if(!handler.isRight()) velX = 0;
 		
-		if(handler.isFire()) {
-			handler.addObject(new Bullet(x, y, 0, -5, ID.Bullet, handler));
-			System.out.println("pew");
+		
+		if(handler.isFire() && fireDelay >= 30) {
+			if(handler.isDown() || lastPressed == 0) 
+				handler.addObject(new Bullet(x+20, y, 0, Bullet.speed, 0, ID.Bullet, handler));
+			else if(handler.isLeft() || lastPressed == 1) 
+				handler.addObject(new Bullet(x, y+20, -Bullet.speed, 0, 1, ID.Bullet, handler));
+			else if(handler.isRight() || lastPressed == 2) 
+				handler.addObject(new Bullet(x, y+20, Bullet.speed, 0, 2, ID.Bullet, handler));
+			else if(handler.isUp() || lastPressed == 3) 
+				handler.addObject(new Bullet(x+20, y, 0, -Bullet.speed, 3, ID.Bullet, handler));
+			fireDelay = 0;
 		}
+		fireDelay++;
 		
 		if(x > 800)
 			x = -40;

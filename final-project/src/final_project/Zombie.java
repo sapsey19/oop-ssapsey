@@ -15,8 +15,8 @@ public class Zombie extends GameObject {
 	private int diffX;
 	private int diffY;
 
-	public Zombie(int x, int y, ID id, Handler handler) {
-		super(x, y, id);
+	public Zombie(int x, int y, int health, ID id, Handler handler) {
+		super(x, y, health, id);
 		this.handler = handler;
 	}
 
@@ -40,6 +40,9 @@ public class Zombie extends GameObject {
 		
 		velX = (float) (2 * Math.cos(angle));
 		velY = (float) (2 * Math.sin(angle));
+		
+		if(health == 0)
+			handler.removeObject(this);
 	}
 
 	public void render(Graphics g) {
@@ -61,7 +64,7 @@ public class Zombie extends GameObject {
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle(x,y,32,32);
+		return new Rectangle(x, y, Texture.zombieWidth, Texture.zombieHeight);
 	}
 	
 }

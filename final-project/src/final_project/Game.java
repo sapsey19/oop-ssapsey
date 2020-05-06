@@ -37,7 +37,9 @@ public class Game extends Canvas implements Runnable {
 		ss = new SpriteSheet(floor);		
 		floor = ss.grabImage(1, 1, 127, 127);
 		
-		handler.addObject(new Player(400, 400, ID.Player, handler));
+		handler.addObject(new Player(400, 400, 100, ID.Player, handler));
+		
+		//handler.addObject(new Skeleton(700, 100, 20, ID.Skeleton, handler));
 		
 	}
 	

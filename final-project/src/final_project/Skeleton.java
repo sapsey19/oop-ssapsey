@@ -15,8 +15,8 @@ public class Skeleton extends GameObject {
 	private int diffX;
 	private int diffY;
 	
-	public Skeleton(int x, int y, ID id, Handler handler) {
-		super(x, y, id);
+	public Skeleton(int x, int y, int health, ID id, Handler handler) {
+		super(x, y, health, id);
 		this.handler = handler;
 	}
 
@@ -41,6 +41,9 @@ public class Skeleton extends GameObject {
 		velX = (float) (2 * Math.cos(angle));
 		velY = (float) (2 * Math.sin(angle));
 		
+		if(health == 0) 
+			handler.removeObject(this);
+		
 	}
 
 	public void render(Graphics g) {
@@ -55,13 +58,13 @@ public class Skeleton extends GameObject {
 				
 		//draws collision boxes
 		//Graphics2D g2d = (Graphics2D) g;
-		//g.setColor(Color.green);
-		//g2d.draw(getEnemyRange());
+		//g.setColor(Color.red);
+		//g2d.draw(getBounds());
 		
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle(x,y,32,32);
+		return new Rectangle(x,y,Texture.skeletonWidth, Texture.skeletonHeight);
 	}
 	
 }

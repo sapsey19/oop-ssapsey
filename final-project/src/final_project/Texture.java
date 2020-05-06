@@ -1,17 +1,18 @@
 package final_project;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 public class Texture {
-	private int playerWidth = 48;
-	private int playerHeight = 48;
-	private int zombieWidth = 30;
-	private int zombieHeight = 42;
-	private int skeletonWidth = 30;
-	private int skeletonHeight = 48;
-	private int bulletWidth = 10;
-	private int bulletHeight = 28;
+	public static int playerWidth = 48;
+	public static int playerHeight = 48;
+	public static int zombieWidth = 30;
+	public static int zombieHeight = 42;
+	public static int skeletonWidth = 30;
+	public static int skeletonHeight = 48;
+	public static int bulletWidth = 10;
+	public static int bulletHeight = 28;
 	
 	public BufferedImage[] playerDown = new BufferedImage[3];
 	public BufferedImage[] playerLeft = new BufferedImage[3];
@@ -93,7 +94,22 @@ public class Texture {
 		skeletonUp[1] = skeletonSheet.grabImage(31, 152, skeletonWidth, skeletonHeight);
 		skeletonUp[2] = skeletonSheet.grabImage(62, 152, skeletonWidth, skeletonHeight);
 		
-		bullet[0] = bulletSheet.grabImage(0, 0, bulletWidth, bulletHeight);
+		bullet[0] = bulletSheet.grabImage(4, 107, bulletWidth, bulletHeight);
+		bullet[3] = bulletSheet.grabImage(4, 39, bulletWidth, bulletHeight);
+		bullet[2] = rotate90(bullet[3]);
+		bullet[1] = rotate90(bullet[0]);
 		
 	}
+	
+	public static BufferedImage rotate90(BufferedImage src) {
+		BufferedImage dest = new BufferedImage(bulletHeight, bulletWidth, src.getType());
+		
+		Graphics2D g2d = dest.createGraphics();
+		g2d.translate((bulletHeight-bulletWidth)/2, (bulletHeight-bulletWidth)/2);
+		g2d.rotate(Math.PI/2, bulletHeight/2, bulletWidth/2);
+		g2d.drawRenderedImage(src, null);
+		
+		return dest;
+	}
+	
 }

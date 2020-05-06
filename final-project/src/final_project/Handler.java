@@ -44,14 +44,15 @@ public class Handler {
 		object.remove(tempObject);
 	}
 	
+	//Factory design pattern for dynamically creating enemies
 	public void enemyFactory() {
 		Random r = new Random();
 		int rand = r.nextInt(10);
 		
 		if(rand > 4)
-			object.add(new Zombie(r.nextInt(800), r.nextInt(800), ID.Zombie, this));
+			object.add(new Zombie(r.nextInt(800), r.nextInt(800), 80, ID.Zombie, this));
 		else
-			object.add(new Skeleton(r.nextInt(800), r.nextInt(800), ID.Skeleton, this));
+			object.add(new Skeleton(r.nextInt(800), r.nextInt(800), 50, ID.Skeleton, this));
 	}
 	
 	public boolean isUp() { return up; }
