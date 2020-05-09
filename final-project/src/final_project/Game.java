@@ -21,10 +21,7 @@ public class Game extends Canvas implements Runnable {
 	private BufferedImage floor = null;
 	
 	private int ticks = 0;
-	private int numEnemies = 2;
-	
-	//private Camera camera;
-	//static Texture texture;
+	private int numEnemies = 2;	
 	
 	public Game() {
 		new Window(width, height, "Ghost Game", this);

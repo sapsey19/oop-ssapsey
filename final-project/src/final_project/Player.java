@@ -8,15 +8,13 @@ public class Player extends GameObject {
 	private Handler handler;
 	private int x_, y_;
 	
-	private int width = 48;
-	private int height = 48;
-	
 	public Texture texture = new Texture();
 	
 	public static int lastPressed = 0; // 0 is down, 1 is left, 2 is right, 3 is up 
 	private int walkCount = 0;
 	
 	private int fireDelay = 0;
+	boolean died = false;
 	
 	public Player(int x, int y, int health, ID id, Handler handler) {
 		super(x, y, health, id);
@@ -67,14 +65,11 @@ public class Player extends GameObject {
 			setY(792);
 		if(getY() > 800)
 			setY(-40);
+		collision();
 		
-		//System.out.println(x);
 	}
 
 	public void render(Graphics g) {
-		//g.drawRect(x, y, 50, 50);
-		//g.setColor(Color.BLUE);
-		//g.fillRect(x, y, 50, 50);
 		if(walkCount >= 180)
 			walkCount = 0;
 		
@@ -109,27 +104,19 @@ public class Player extends GameObject {
 	}
 	
 	private void collision() {
-			
+		for(int i = 0; i < handler.object.size(); i++) {
+			GameObject object = handler.object.get(i);
+			if(object.getID() == ID.Skeleton || object.getID() == ID.Zombie) {
+				if(getBounds().intersects(object.getBounds()) && !died) {
+					handler.removeObject(this);
+					System.out.println("YOU DIED. Final Score: " + handler.getScore());
+					died = true;
+				}
+			}
+		}
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle((int) ((int)x+(width/2)-(width/2)/2), (int) ((int)y + (height/2-1)), (int)width/2, (int)height/2);
+		return new Rectangle(getX() + 5, getY(), Texture.playerWidth - 10, Texture.playerHeight);
 	}
-	
-	public void setLastPressed(int lastPressed) {
-		this.lastPressed = lastPressed;
-	}
-	
-//	public boolean isUp() { return up; }
-//	public boolean isDown() { return down; }
-//	public boolean isRight() { return right; }
-//	public boolean isLeft() { return left; }
-//	
-//	public void setUp(boolean up) { this.up = up; }
-//	public void setDown(boolean down) { this.down = down; }
-//	public void setRight(boolean right) { this.right = right; }
-//	public void setLeft(boolean left) { this.left = left; }
-	
-	
-
 }

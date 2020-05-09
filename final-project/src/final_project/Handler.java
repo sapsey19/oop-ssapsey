@@ -12,6 +12,8 @@ public class Handler {
 	private boolean left = false;
 	private boolean fire = false;
 	
+	public int score = 0;
+	
 	LinkedList<GameObject> object = new LinkedList<GameObject>();
 	
 	public LinkedList<GameObject> isObject() {
@@ -41,6 +43,8 @@ public class Handler {
 	}
 	
 	public void removeObject(GameObject tempObject) {
+		if(tempObject.getID() == ID.Skeleton || tempObject.getID() == ID.Zombie)
+			score++;
 		object.remove(tempObject);
 	}
 	
@@ -60,6 +64,7 @@ public class Handler {
 	public boolean isRight() { return right; }
 	public boolean isLeft() { return left; }
 	public boolean isFire() { return fire; }
+	public int getScore() { return score; }
 	
 	public void setUp(boolean up) { this.up = up; }
 	public void setDown(boolean down) { this.down = down; }
