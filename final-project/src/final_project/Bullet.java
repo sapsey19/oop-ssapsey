@@ -20,7 +20,6 @@ public class Bullet extends GameObject {
 	}
 
 	public void tick() {
-		setVelX(speed);
 		if(direction == 0) y += speed;
 		if(direction == 1) x -= speed;
 		if(direction == 2) x += speed;

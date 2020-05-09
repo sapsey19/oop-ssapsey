@@ -1,5 +1,10 @@
 package final_project;
 
+/*
+ * Creator: Sean Apsey
+ * 
+ */
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
