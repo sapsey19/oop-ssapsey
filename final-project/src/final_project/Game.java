@@ -39,8 +39,6 @@ public class Game extends Canvas implements Runnable {
 		
 		handler.addObject(new Player(400, 400, 100, ID.Player, handler));
 		
-		//handler.addObject(new Skeleton(700, 100, 20, ID.Skeleton, handler));
-		
 	}
 	
 	private void start() {
@@ -90,11 +88,13 @@ public class Game extends Canvas implements Runnable {
 	
 	private void tick() {
 		handler.tick();
-		if(ticks == 600) {
+		if(handler.object.size() == 1)
+			handler.enemyFactory();
+		if(ticks >= 500) {
 			for(int i = 0; i < numEnemies; i++)
 				handler.enemyFactory();
 			ticks = 0;
-			numEnemies+=2;
+			numEnemies+=1;
 		}
 		ticks++;
 	}

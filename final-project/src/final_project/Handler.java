@@ -50,9 +50,9 @@ public class Handler {
 		int rand = r.nextInt(10);
 		
 		if(rand > 4)
-			object.add(new Zombie(r.nextInt(800), r.nextInt(800), 80, ID.Zombie, this));
+			object.add(new Zombie(r.nextInt(800), r.nextInt(800), 100, ID.Zombie, this));
 		else
-			object.add(new Skeleton(r.nextInt(800), r.nextInt(800), 50, ID.Skeleton, this));
+			object.add(new Skeleton(r.nextInt(800), r.nextInt(800), 60, ID.Skeleton, this));
 	}
 	
 	public boolean isUp() { return up; }

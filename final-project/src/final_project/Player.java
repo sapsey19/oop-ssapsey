@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 public class Player extends GameObject {
 
 	private Handler handler;
-	private float velX = 0, velY = 0;
+	private int x_, y_;
 	
 	private int width = 48;
 	private int height = 48;
@@ -24,45 +24,49 @@ public class Player extends GameObject {
 	}
 
 	public void tick() {
-		x += velX;
-		y += velY;
+		x_ = getX();
+		y_ = getY();
+		x_ += getVelX();
+		y_ += getVelY();
+		setX(x_);
+		setY(y_);
 		
 		collision();
 		
-		if(handler.isUp()) velY = -5;
-		else if(!handler.isDown()) velY = 0;
+		if(handler.isUp()) setVelY(-5);
+		else if(!handler.isDown()) setVelX(0);
 		
-		if(handler.isDown()) velY = 5;
-		else if(!handler.isUp()) velY = 0;
+		if(handler.isDown()) setVelY(5);
+		else if(!handler.isUp()) setVelY(0);
 		
-		if(handler.isRight()) velX = 5;
-		else if(!handler.isLeft()) velX = 0;
+		if(handler.isRight()) setVelX(5);
+		else if(!handler.isLeft()) setVelX(0);
 		
-		if(handler.isLeft()) velX = -5;
-		else if(!handler.isRight()) velX = 0;
+		if(handler.isLeft()) setVelX(-5);
+		else if(!handler.isRight()) setVelX(0);
 		
 		
-		if(handler.isFire() && fireDelay >= 30) {
+		if(handler.isFire() && fireDelay >= 10) {
 			if(handler.isDown() || lastPressed == 0) 
-				handler.addObject(new Bullet(x+20, y, 0, Bullet.speed, 0, ID.Bullet, handler));
+				handler.addObject(new Bullet(x+20, y, 0, ID.Bullet, handler));
 			else if(handler.isLeft() || lastPressed == 1) 
-				handler.addObject(new Bullet(x, y+20, -Bullet.speed, 0, 1, ID.Bullet, handler));
+				handler.addObject(new Bullet(x, y+20, 1, ID.Bullet, handler));
 			else if(handler.isRight() || lastPressed == 2) 
-				handler.addObject(new Bullet(x, y+20, Bullet.speed, 0, 2, ID.Bullet, handler));
+				handler.addObject(new Bullet(x, y+20, 2, ID.Bullet, handler));
 			else if(handler.isUp() || lastPressed == 3) 
-				handler.addObject(new Bullet(x+20, y, 0, -Bullet.speed, 3, ID.Bullet, handler));
+				handler.addObject(new Bullet(x+20, y, 3, ID.Bullet, handler));
 			fireDelay = 0;
 		}
 		fireDelay++;
 		
-		if(x > 800)
-			x = -40;
-		if(x < -48)
-			x = 792;
-		if(y < -48)
-			y = 792;
-		if(y > 800)
-			y = -40;
+		if(getX() > 800)
+			setX(-40);
+		if(getX() < -48)
+			setX(792);
+		if(getY() < -48)
+			setY(792);
+		if(getY() > 800)
+			setY(-40);
 		
 		//System.out.println(x);
 	}
